@@ -1,0 +1,175 @@
+﻿<Window
+    x:Class="DemoPodgotovka.AllWindows.WinAssortiment"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DemoPodgotovka.AllWindows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Ассортимент"
+    Width="1000"
+    Height="650"
+    FontFamily="Century Gothic"
+    Icon="/Images/Глазки-save.ico"
+    ResizeMode="CanResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid Background="#FFE9F9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72*" />
+            <RowDefinition Height="245*" />
+        </Grid.RowDefinitions>
+        <Border
+            Margin="33,50,614,43"
+            BorderBrush="#B175EE"
+            BorderThickness="3">
+            <TextBox
+                x:Name="txtPoisk"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                FontSize="16"
+                TextChanged="txtPoisk_TextChanged"
+                TextWrapping="Wrap" />
+        </Border>
+
+
+        <Border
+            Width="184"
+            Height="51"
+            Margin="533,50,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderBrush="#B175EE"
+            BorderThickness="3">
+            <ComboBox
+                x:Name="cmbSort"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                FontSize="16" SelectionChanged="cmbSort_SelectionChanged" />
+        </Border>
+        <Border
+            Width="184"
+            Height="51"
+            Margin="780,50,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderBrush="#B175EE"
+            BorderThickness="3">
+            <ComboBox
+                x:Name="cmbFilter"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                DisplayMemberPath="Title"
+                FontSize="16"
+                SelectionChanged="cmbFilter_SelectionChanged" />
+        </Border>
+        <Label
+            x:Name="lbSort"
+            Margin="570,15,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Сортировка"
+            FontSize="16"
+            FontWeight="Bold"
+            Foreground="#B175EE" />
+        <Label
+            x:Name="LbFilter"
+            Margin="819,15,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Фильтрация"
+            FontSize="16"
+            FontWeight="Bold"
+            Foreground="#B175EE" />
+        <Label
+            x:Name="lbPoisk"
+            Margin="180,15,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Поиск"
+            FontSize="16"
+            FontWeight="Bold"
+            Foreground="#B175EE" />
+        <ListView
+            x:Name="LstGlaz"
+            Grid.Row="1"
+            Margin="112,42,112,91"
+            BorderBrush="#B175EE"
+            BorderThickness="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Grid HorizontalAlignment="Stretch" Background="AliceBlue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                x:Name="ImageLog"
+                                Grid.Column="0"
+                                Width="100"
+                                Height="100"
+                                Source="/Images/picture.png" />
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        HorizontalAlignment="Left"
+                                        FontSize="15"
+                                        Text="{Binding AgentType.Title}" />
+                                    <TextBlock
+                                        Margin="5,0,0,0"
+                                        HorizontalAlignment="Right"
+                                        FontSize="15"
+                                        Text="{Binding Title}" />
+                                </StackPanel>
+                                <TextBlock
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Left"
+                                    FontSize="15"
+                                    Text="{Binding Phone}" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    HorizontalAlignment="Left"
+                                    FontSize="15"
+                                    Text="{Binding Priority, StringFormat='Приоритетность: {0}'}" />
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+
+        </ListView>
+        <Button
+            x:Name="btnADDagent"
+            Grid.Row="1"
+            Width="152"
+            Height="33"
+            Margin="112,425,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FFFFFF"
+            BorderBrush="#B175EE"
+            BorderThickness="3"
+            Click="btnADDagent_Click"
+            Content="Добавление агента" />
+        <Button
+            x:Name="btnClear"
+            Width="38"
+            Height="39"
+            Margin="729,56,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="White"
+            BorderBrush="#B175EE"
+            BorderThickness="2"
+            Content="X" Click="btnClear_Click" />
+    </Grid>
+</Window>
